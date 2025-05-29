@@ -1,5 +1,7 @@
 # SQL_Interviewprep
 
+
+### https://www.sql-practice.com/
 Tables:
 Patient Table:  
 
@@ -78,5 +80,43 @@ select concat(first_name," ",last_name) as full_name from patients;
 Show first name, last name, and the full province name of each patient.   
 Example: 'Ontario' instead of 'ON'  
 select p.first_name,p.last_name,pn.province_name from patients p left join province_names pn on p.province_id=pn.province_id;
+
+Show how many patients have a birth_date with 2010 as the birth year.  
+select count (*) from patients where year(birth_date)== 2010;
+
+Show the first_name, last_name, and height of the patient with the greatest height.  
+select first_name,last_name,height from patients where height = (select max(height) from patients);
+
+Show all columns for patients who have one of the following patient_ids:
+1,45,534,879,1000   
+select * from patients where patient_id in (1,45,534,879,1000);
+
+Show all the columns from admissions where the patient was admitted and discharged on the same day.  
+select * from admissions where admission_date = discharge_date;
+
+Based on the cities that our patients live in, show unique cities that are in province_id 'NS'.  
+select distinct city as unique_cities from patients where province_id ="NS";  
+SELECT city FROM patients GROUP BY city HAVING province_id = 'NS';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

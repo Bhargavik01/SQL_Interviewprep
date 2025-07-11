@@ -25,3 +25,10 @@ candidate_id
 Explanation
 Candidate 123 is displayed because they have Python, Tableau, and PostgreSQL skills. 345 isn't included in the output because they're missing one of the required skills: PostgreSQL.
 
+select candidate_id
+FROM candidates
+WHERE skill in ('Python','Tableau','PostgreSQL')
+group by candidate_id
+having count(skill)
+=3;  
+
